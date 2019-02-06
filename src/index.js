@@ -4,19 +4,23 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { createStore, applyMiddleware } from 'redux';
-import todoApp from './reducers';
-import { receivePosts, REQUEST_POSTS } from './actions';
+import { createStore, applyMiddleware, compose } from 'redux';
+import postsApp from './reducers';
+import { receivePosts } from './actions';
+import { createLogger } from 'redux-logger';
+
+let composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+let loggerMiddleware = createLogger();
 
 let store = createStore(
-  todoApp,
-  applyMiddleware(
-    thunkMiddleware
-  ));
-
-let unsubscribe = store.subscribe(() => {
-  console.log("store was changed:", store.getState());
-});
+  postsApp,
+  composeEnhancers(
+    applyMiddleware(
+      thunkMiddleware,
+      loggerMiddleware
+    )
+  )
+);
 
 store.dispatch(receivePosts());
 

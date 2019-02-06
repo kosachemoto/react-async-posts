@@ -1,9 +1,8 @@
 import { chain } from 'lodash';
-
+import { combineReducers } from 'redux';
 
 import {
-  REQUEST_POSTS,
-  receivePosts
+  REQUEST_POSTS
 } from './actions';
 
 function posts(state = {}, action) {
@@ -12,20 +11,26 @@ function posts(state = {}, action) {
       return {
         ...state,
       }
-    break;
     case REQUEST_POSTS.FINISH: 
+      let posts = chain(action.payload.posts)
+        .keyBy("id")
+        .value()
+
       return {
-        ...state
+        ...state,
+        posts
       }
-    break;
     case REQUEST_POSTS.ERROR:
       return {
         ...state
       }
-    break;
     default:
       return state;
   }
 }
 
-export default posts;
+const postsApp = combineReducers({
+  posts
+});
+
+export default postsApp;

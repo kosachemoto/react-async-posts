@@ -9,9 +9,10 @@ export const REQUEST_POSTS = {
   ERROR: "REQUEST_POSTS_ERROR"
 }
 
-export function requestPosts(state) {
+export function requestPosts(state, payload) {
   return {
-    type: `${REQUEST_POSTS}_${state}`
+    type: REQUEST_POSTS[state],
+    payload
   }
 }
 
@@ -26,13 +27,13 @@ export function receivePosts() {
   return function (dispatch) {
     dispatch(requestPosts('START'));
     try {
-      let response = fetch(`https://jsonplaceholder.typicode.com/posts`)
-        .then(response => )
-      console.log("response", response);
-      let posts = response.data;
-      dispatch(requestPosts('FINISH', { posts }))
+      fetch(`https://jsonplaceholder.typicode.com/posts`)
+        .then(response => response.json())
+        .then(posts => {
+          dispatch(requestPosts('FINISH', { posts }))
+        })
     } catch (error) {
-      dispatch(requestPosts('ERROR', {error}))
+      dispatch(requestPosts('ERROR', { error }))
     }
   }
 }
