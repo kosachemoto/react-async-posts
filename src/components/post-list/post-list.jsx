@@ -1,11 +1,13 @@
 import React from 'react';
+import { Post } from './../../components';
+import './post-list.css';
 
-const PostList = () => {
+export const PostList = () => {
   return (
-    <>
-      This is PostList-component
-    </>
+    <div className="post-list">
+      <Post />
+      <Post />
+      <Post />
+    </div>
   )
 }
-
-export default PostList;

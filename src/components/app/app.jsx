@@ -1,15 +1,11 @@
 import React from 'react';
-// import Post from './../../components';
-// import PostList from './../../components';
+import { Post, PostList } from './../../components';
 
-const App = () => {
+export const App = () => {
   return (
     <>
       This is App-component
-      {/* <Post /> */}
-      {/* <PostList /> */}
+      <PostList />
     </>
   );
 }
-
-export default App;

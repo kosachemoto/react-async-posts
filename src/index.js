@@ -8,7 +8,7 @@ import postsApp from './reducers';
 import { receivePosts } from './actions';
 import { createLogger } from 'redux-logger';
 import * as something from './components';
-import Root from './components/root/root';
+import { Root } from './components';
 import * as someApp from './components/app';
 import * as somePost from './components/post';
 

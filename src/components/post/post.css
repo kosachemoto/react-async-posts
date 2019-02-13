@@ -1,0 +1,17 @@
+.post { 
+  padding: 10px;
+  background-color: khaki;
+  cursor: pointer;
+}
+
+.post-title {
+  margin: unset;
+  text-transform: uppercase;
+  font-size: 24px;
+}
+
+.post-body {
+  margin: unset;
+  line-height: 1.5;
+  font-size: 18px;;
+}
