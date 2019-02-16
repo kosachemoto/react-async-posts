@@ -7,10 +7,6 @@ import {
 
 function posts(state = {}, action) {
   switch (action.type) {
-    case REQUEST_POSTS.START:
-      return {
-        ...state,
-      }
     case REQUEST_POSTS.FINISH: 
       let posts = chain(action.payload.posts)
         .keyBy("id")
@@ -22,15 +18,18 @@ function posts(state = {}, action) {
       }
     case REQUEST_POSTS.ERROR:
       return {
-        ...state
+        posts: {...state}
       }
+    case REQUEST_POSTS.START:
     default:
-      return state;
+      return {
+        posts: {...state}
+      }
   }
 }
 
-const postsApp = combineReducers({
-  posts
-});
+// const postsApp = combineReducers({
+//   posts
+// });
 
-export default postsApp;
+export default posts;

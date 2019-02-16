@@ -1,7 +1,12 @@
 .post { 
+  transition: background-color .075s;
   padding: 10px;
   background-color: khaki;
   cursor: pointer;
+}
+
+.post:hover {
+  background-color: #FFF8BA;
 }
 
 .post-title {
