@@ -1,9 +1,9 @@
 import React from 'react';
 import './more-button.css';
 
-export const MoreButton = () => {
+export const MoreButton = ({loadMore}) => {
   return (
-    <div className="more-button">
+    <div className="more-button" onClick={loadMore}>
       Load More
     </div>
   )

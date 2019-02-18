@@ -1,9 +1,8 @@
 import fetch from 'isomorphic-fetch';
+import * as services from './services';
 
 export const REQUEST_COMMENTS = 'REQUEST_COMMENTS';
-
 export const REQUEST_POSTS = {
-  SELF: "REQUEST_POSTS",
   START: "REQUEST_POSTS_START",
   FINISH: "REQUEST_POSTS_FINISH",
   ERROR: "REQUEST_POSTS_ERROR"
@@ -27,12 +26,12 @@ export function receivePosts() {
   return function (dispatch) {
     dispatch(requestPosts('START'));
     try {
-      fetch(`https://jsonplaceholder.typicode.com/posts`)
-        .then(response => response.json())
+      services.Post.load(1)
         .then(posts => {
           dispatch(requestPosts('FINISH', { posts }))
         })
     } catch (error) {
+      services.Post.loaded = false;
       dispatch(requestPosts('ERROR', { error }))
     }
   }

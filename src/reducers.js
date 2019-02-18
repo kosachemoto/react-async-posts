@@ -1,6 +1,4 @@
 import { chain } from 'lodash';
-import { combineReducers } from 'redux';
-
 import {
   REQUEST_POSTS
 } from './actions';
@@ -11,19 +9,17 @@ function posts(state = {}, action) {
       let posts = chain(action.payload.posts)
         .keyBy("id")
         .value()
-
       return {
-        ...state,
-        posts
+        posts: {...state.posts, ...posts}, // need some refactoring...
       }
     case REQUEST_POSTS.ERROR:
       return {
-        posts: {...state}
+        posts: {...state.posts}
       }
     case REQUEST_POSTS.START:
     default:
       return {
-        posts: {...state}
+        posts: {...state.posts}
       }
   }
 }
