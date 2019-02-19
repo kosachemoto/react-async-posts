@@ -1,21 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Post, MoreButton } from './../../components';
 import { connect } from 'react-redux';
 import { receivePosts } from './../../actions';
 import './post-list.css';
 
-const component = ({posts, loadMore}) => {
+const component = ({posts, loadMore, className}) => {
   return (
-    <div className="post-list">
+    <div className={`${className} post-list`}>
       { Object.values(posts).map(((post, index) => <Post key={index} {...post} />)) }
       <MoreButton loadMore={loadMore} />
     </div>
   )
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
   return {
-    posts: state.posts
+    posts: state.posts,
+    ...ownProps
   }
 }
 

@@ -1,11 +1,15 @@
 import React from 'react';
-import { Post, PostList } from './../../components';
+import { PostList, PostDetail } from './../../components';
+import styles from './app.css';
 
 export const App = () => {
   return (
-    <>
-      This is App-component
-      <PostList />
-    </>
+    <div className="app">
+      <div className="app__title">
+        Posts app
+      </div>
+      <PostList className="app__post-list" />
+      <PostDetail className="app__post-detail" />
+    </div>
   );
 }

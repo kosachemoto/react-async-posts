@@ -1,0 +1,25 @@
+.app {
+  display: grid;
+  grid-template-columns: 33% auto;
+  grid-template-areas: 
+    "header    header"
+    "post-list post";
+  background-color: aliceblue;
+}
+
+.app__title {
+  grid-area: header;
+  padding: 10px 20px;
+  font-size: 40px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.app__post-list {
+  grid-area: post-list;
+}
+
+.app__post-detail {
+  grid-area: post;
+  align-self: start;
+}
