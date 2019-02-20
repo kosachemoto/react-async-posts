@@ -1,0 +1,11 @@
+.author {
+  font-size: 18px;
+}
+
+.author-name {
+  font-weight: bold;
+}
+
+.author-email {
+  font-style: italic;
+}
