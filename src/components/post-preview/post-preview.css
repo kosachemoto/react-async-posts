@@ -1,0 +1,22 @@
+.post-preview { 
+  transition: background-color .075s;
+  padding: 10px;
+  background-color: khaki;
+  cursor: pointer;
+}
+
+.post-preview:hover {
+  background-color: #FFF8BA;
+}
+
+.post-preview-title {
+  margin: unset;
+  text-transform: uppercase;
+  font-size: 24px;
+}
+
+.post-preview-body {
+  margin: unset;
+  line-height: 1.5;
+  font-size: 18px;
+}

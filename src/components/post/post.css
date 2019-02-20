@@ -1,12 +1,6 @@
-.post { 
-  transition: background-color .075s;
+.post {
   padding: 10px;
-  background-color: khaki;
-  cursor: pointer;
-}
-
-.post:hover {
-  background-color: #FFF8BA;
+  background-color: azure;
 }
 
 .post-title {
@@ -18,5 +12,9 @@
 .post-body {
   margin: unset;
   line-height: 1.5;
-  font-size: 18px;;
+  font-size: 18px;
+}
+
+.post_author {
+  margin-top: 25px;
 }

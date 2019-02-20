@@ -2,3 +2,7 @@
   padding: 10px;
   background-color:thistle;
 }
+
+.post-detail > *:not(:last-child) {
+  margin-bottom: 10px;
+}

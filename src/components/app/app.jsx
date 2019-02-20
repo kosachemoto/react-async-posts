@@ -2,6 +2,8 @@ import React from 'react';
 import { PostList, PostDetail } from './../../components';
 import styles from './app.css';
 
+console.log("PostDetail:", PostDetail);
+
 export const App = () => {
   return (
     <div className="app">

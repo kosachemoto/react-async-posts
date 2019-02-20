@@ -1,9 +1,11 @@
 .app {
   display: grid;
+  min-height: 100vh;
   grid-template-columns: 33% auto;
   grid-template-areas: 
-    "header    header"
-    "post-list post";
+  "header    header"
+  "post-list post";
+  align-content: flex-start;
   background-color: aliceblue;
 }
 
@@ -17,6 +19,7 @@
 
 .app__post-list {
   grid-area: post-list;
+  align-self: start;
 }
 
 .app__post-detail {

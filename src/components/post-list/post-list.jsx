@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
-import { Post, MoreButton } from './../../components';
+import { PostPreview, MoreButton } from './../../components';
 import { connect } from 'react-redux';
 import { receivePosts } from './../../actions';
 import './post-list.css';
 
 const component = ({posts, loadMore, className}) => {
   return (
-    <div className={`${className} post-list`}>
-      { Object.values(posts).map(((post, index) => <Post key={index} {...post} />)) }
+    <div className={`post-list ${className}`}>
+      { Object.values(posts).map(((post, index) => <PostPreview key={index} {...post} />)) }
       <MoreButton loadMore={loadMore} />
     </div>
   )
