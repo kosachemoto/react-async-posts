@@ -1,7 +1,7 @@
 .app {
   display: grid;
   min-height: 100vh;
-  grid-template-columns: 33% auto;
+  grid-template-columns: auto auto;
   grid-template-areas: 
   "header    header"
   "post-list post";

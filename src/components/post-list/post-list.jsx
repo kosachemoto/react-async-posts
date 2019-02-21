@@ -7,8 +7,8 @@ import './post-list.css';
 const component = ({posts, loadMore, className}) => {
   return (
     <div className={`post-list ${className}`}>
-      { Object.values(posts).map(((post, index) => <PostPreview key={index} {...post} />)) }
       <MoreButton loadMore={loadMore} />
+      { Object.values(posts).map(((post, index) => <PostPreview key={index} {...post} />)) }
     </div>
   )
 }
