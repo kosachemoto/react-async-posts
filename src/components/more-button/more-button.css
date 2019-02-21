@@ -1,4 +1,7 @@
 .more-button {
+  position: relative;
+  width: 200px;
+  height: 200px;
   transition: background-color .075s;
   padding: 10px;
   text-align: center;
@@ -7,6 +10,16 @@
   font-weight: bold;
   background-color: paleturquoise;
   cursor: pointer;
+}
+
+.more-button__title {
+  position: absolute;
+  right: 0;
+  left: 0;
+}
+
+.more-button__img {
+  margin: 50px;
 }
 
 .more-button:hover {
