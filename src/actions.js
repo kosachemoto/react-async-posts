@@ -2,15 +2,28 @@ import fetch from 'isomorphic-fetch';
 import * as services from './services';
 
 export const REQUEST_COMMENTS = 'REQUEST_COMMENTS';
-export const REQUEST_POSTS = {
-  START: "REQUEST_POSTS_START",
-  FINISH: "REQUEST_POSTS_FINISH",
-  ERROR: "REQUEST_POSTS_ERROR"
+export const REQUEST_POST = {
+  START: "REQUEST_POST_START",
+  FINISH: "REQUEST_POST_FINISH",
+  ERROR: "REQUEST_POST_ERROR"
 }
 
-export function requestPosts(state, payload) {
+export const REQUEST_AUTHOR = {
+  START: "REQUEST_AUTHOR_START",
+  FINISH: "REQUEST_AUTHOR_FINISH",
+  ERROR: "REQUEST_AUTHOR_ERROR"
+}
+
+export function requestPost(state, payload) {
   return {
-    type: REQUEST_POSTS[state],
+    type: REQUEST_POST[state],
+    payload
+  }
+}
+
+export function requestAuthor(state, payload) {
+  return {
+    type: REQUEST_AUTHOR[state],
     payload
   }
 }
@@ -22,17 +35,33 @@ function requestComments(stage, payload) {
   }
 }
 
-export function receivePosts() {
+export function receivePost(postId) {
   return function (dispatch) {
-    dispatch(requestPosts('START'));
+    dispatch(requestPost('START'));
     try {
-      services.Post.load(1)
-        .then(posts => {
-          dispatch(requestPosts('FINISH', { posts }))
+      services.Post.post(postId)
+        .then(post => {
+          console.log("post:", post);
+          dispatch(requestPost('FINISH', { post }))
         })
     } catch (error) {
       services.Post.loaded = false;
-      dispatch(requestPosts('ERROR', { error }))
+      dispatch(requestPost('ERROR', { error }))
+    }
+  }
+}
+
+export function receiveAuthor(userId) {
+  return function(dispatch) {
+    dispatch(requestAuthor('START'));
+    try {
+      // servicces.Post.author(userId)
+      //   .then(author => {
+      //     console.log("(action):author:", author);
+          dispatch(requestAuthor('FINISH'));
+        // })
+    } catch (error) {
+      dispatch(requestAuthor('ERROR'));
     }
   }
 }

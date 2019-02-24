@@ -3,21 +3,25 @@ import fetch from 'isomorphic-fetch';
 const url = 'https://jsonplaceholder.typicode.com';
 
 export const Post = {
+
   posts: [],
   loaded: false,
-  load: (count) => {
+  post: (postId) => {
     return new Promise(resolve => {
-      if (!Post.loaded) {
-        Post.loaded = true;
-        fetch(`${url}/posts`)
-          .then(response => response.json())
-          .then(posts => {
-            Post.posts = posts;
-            resolve(Post.posts.splice(0, count));
-          });
-        } else {
-          resolve(Post.posts.splice(0, count));
-      }
+      fetch(`${url}/posts/${postId}`)
+        .then(response => response.json())
+        .then(post => {
+          resolve(post)
+        })
     });
+  },
+  author: (userId) => {
+    return new Promise(resolve => {
+      fetch(`${url}/users/${userId}`)
+        .then(response => response.json())
+        .then(user => {
+          resolve(user)
+        })
+    })
   }
 }

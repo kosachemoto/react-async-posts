@@ -1,7 +1,9 @@
 .post-preview { 
   transition: background-color .075s;
   padding: 10px;
+  color: unset;
   background-color: khaki;
+  text-decoration: unset;
   cursor: pointer;
 }
 

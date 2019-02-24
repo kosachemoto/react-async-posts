@@ -1,16 +1,35 @@
 import React from 'react';
-import { PostPreview, MoreButton } from './../../components';
+import { PostPreview, MoreButton, ResetButton } from './../../components';
 import { connect } from 'react-redux';
-import { receivePosts } from './../../actions';
+import { receivePost, receiveAuthor } from './../../actions';
 import './post-list.css';
 
-const PostList = ({posts, loadMore, className}) => {
+const PostList = ({posts, loadNext, className}) => {
+  const nextId = nextPostId(posts);
+  
   return (
     <div className={`post-list ${className}`}>
-      <MoreButton loadMore={loadMore} />
+      <MoreButton loadNext={() => {loadNext(nextId)}} nextPostId={nextPostId(posts)} />
+      <ResetButton />
       { Object.values(posts).map(((post, index) => <PostPreview key={index} {...post} />)) }
     </div>
   )
+}
+
+export const nextPostId = (posts) => {
+  const ids = Object.keys(posts);
+
+  if (!ids.length) {
+    return 1;
+  }
+
+  const missedIndex = ids.findIndex((id, index) => +id !== index + 1); 
+
+  if (missedIndex < 0) {
+    return ids.length + 1;
+  } else {
+    return missedIndex + 1;
+  }
 }
 
 const mapStateToProps = (state, ownProps) => {
@@ -22,7 +41,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    loadMore: () => dispatch(receivePosts())
+    loadNext: postId => dispatch(receivePost(postId)),
+    loadAuthor: () => dispatch(receiveAuthor())
   }
 }
 

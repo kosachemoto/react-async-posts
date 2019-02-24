@@ -1,22 +1,23 @@
 import { chain } from 'lodash';
 import {
-  REQUEST_POSTS
+  REQUEST_POST
 } from './actions';
 
 function posts(state = {}, action) {
   switch (action.type) {
-    case REQUEST_POSTS.FINISH: 
-      let posts = chain(action.payload.posts)
-        .keyBy("id")
-        .value()
+    case REQUEST_POST.FINISH: 
+      const post = action.payload.post;
       return {
-        posts: {...state.posts, ...posts}, // need some refactoring...
+        posts: {
+          ...state.posts, 
+          [post.id]: {...post}
+        }, // need some refactoring...
       }
-    case REQUEST_POSTS.ERROR:
+    case REQUEST_POST.ERROR:
       return {
         posts: {...state.posts}
       }
-    case REQUEST_POSTS.START:
+    case REQUEST_POST.START:
     default:
       return {
         posts: {...state.posts}
