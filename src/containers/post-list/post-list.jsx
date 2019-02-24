@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { receivePosts } from './../../actions';
 import './post-list.css';
 
-const component = ({posts, loadMore, className}) => {
+const PostList = ({posts, loadMore, className}) => {
   return (
     <div className={`post-list ${className}`}>
       <MoreButton loadMore={loadMore} />
@@ -26,7 +26,7 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export const PostList = connect(
+export const PostListContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(component);
+)(PostList);

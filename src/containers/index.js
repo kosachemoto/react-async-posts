@@ -1,1 +1,2 @@
-export * from './post-detail-container';
+export * from './post-detail';
+export * from './post-list';

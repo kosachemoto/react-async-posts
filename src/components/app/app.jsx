@@ -1,13 +1,8 @@
-import React, { useEffect } from 'react';
-import { PostList, PostDetail } from './../../components';
-import { testContainer } from './../../containers';
+import React from 'react';
+import { PostListContainer, PostDetailContainer } from './../../containers';
 import './app.css';
 
 export const App = ({match}) => {
-  useEffect(() => {
-    console.log("testContainer:", testContainer);
-  });
-
   const selectedPostId = match.params.postId;
 
   return (
@@ -15,8 +10,8 @@ export const App = ({match}) => {
       <div className="app__title">
         Posts app
       </div>
-      <PostList className="app__post-list" />
-      <PostDetail className="app__post-detail" postId={selectedPostId || ''} />
+      <PostListContainer className="app__post-list" />
+      <PostDetailContainer className="app__post-detail" postId={selectedPostId || ''} />
     </div>
   );
 }

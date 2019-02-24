@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 import { Post, CommentList } from './../../components';
 import './post-detail.css';
 
-export const PostDetail = ({className, postId, post}) => {
+const PostDetail = ({className, postId, post}) => {
   if (postId) {
     return (
       (<div className={`post-detail ${className}`}>
-        <Post post={post} />
+        <Post {...post} />
         <CommentList />
       </div>)
     );
@@ -20,15 +20,15 @@ export const PostDetail = ({className, postId, post}) => {
   }
 }
 
-// const mapStateToProps = (state, ownProps) => {
-//   const postId = ownProps.postId;
+const mapStateToProps = (state, ownProps) => {
+  const postId = ownProps.postId;
 
-//   return {
-//     post: postId ? state.posts[postId] : {}
-//   }
-// }
+  return {
+    post: postId ? state.posts[postId] : {}
+  }
+}
 
-// export const PostDetail = connect(
-//   mapStateToProps,
-//   null
-// )(PostDetail)
+export const PostDetailContainer = connect(
+  mapStateToProps,
+  null
+)(PostDetail)

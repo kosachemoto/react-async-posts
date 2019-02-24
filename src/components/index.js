@@ -4,7 +4,5 @@ export * from './comment';
 export * from './comment-list';
 export * from './post';
 export * from './post-preview';
-export * from './post-list';
-export * from './post-detail';
 export * from './more-button';
 export * from './root';
