@@ -5,4 +5,5 @@ export * from './comment-list';
 export * from './post';
 export * from './post-preview';
 export * from './more-button';
+export * from './reset-button';
 export * from './root';
