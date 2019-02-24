@@ -1,17 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { PostList, PostDetail } from './../../components';
-import styles from './app.css';
+import { testContainer } from './../../containers';
+import './app.css';
 
-console.log("PostDetail:", PostDetail);
+export const App = ({match}) => {
+  useEffect(() => {
+    console.log("testContainer:", testContainer);
+  });
 
-export const App = () => {
+  const selectedPostId = match.params.postId;
+
   return (
     <div className="app">
       <div className="app__title">
         Posts app
       </div>
       <PostList className="app__post-list" />
-      <PostDetail className="app__post-detail" />
+      <PostDetail className="app__post-detail" postId={selectedPostId || ''} />
     </div>
   );
 }

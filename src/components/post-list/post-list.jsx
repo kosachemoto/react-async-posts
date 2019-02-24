@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { PostPreview, MoreButton } from './../../components';
 import { connect } from 'react-redux';
 import { receivePosts } from './../../actions';
