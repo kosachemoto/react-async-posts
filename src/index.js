@@ -5,15 +5,17 @@ import './index.css';
 import * as serviceWorker from './serviceWorker';
 import { createStore, applyMiddleware, compose } from 'redux';
 import postsApp from './reducers';
-import { receivePosts } from './actions';
 import { createLogger } from 'redux-logger';
 import { Root } from './components';
+import { loadState, saveState } from './localStorage';
 
-let composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-let loggerMiddleware = createLogger();
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const loggerMiddleware = createLogger();
+const persistedState = loadState();
 
-let store = createStore(
+const store = createStore(
   postsApp,
+  persistedState,
   composeEnhancers(
     applyMiddleware(
       thunkMiddleware,
@@ -22,7 +24,9 @@ let store = createStore(
   )
 );
 
-store.dispatch(receivePosts());
+store.subscribe(() => {
+  saveState(store.getState());
+});
 
 ReactDOM.render(<Root store={store} />, document.getElementById('root'));
 
