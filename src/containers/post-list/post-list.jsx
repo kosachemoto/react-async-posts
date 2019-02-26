@@ -1,16 +1,16 @@
 import React from 'react';
 import { PostPreview, MoreButton, ResetButton } from './../../components';
 import { connect } from 'react-redux';
-import { receivePost, receiveAuthor } from './../../actions';
+import { resetState, receivePost, receiveAuthor } from './../../actions';
 import './post-list.css';
 
-const PostList = ({posts, loadNext, className}) => {
+const PostList = ({posts, loadNext, className, resetPosts}) => {
   const nextId = nextPostId(posts);
   
   return (
     <div className={`post-list ${className}`}>
       <MoreButton loadNext={() => {loadNext(nextId)}} nextPostId={nextPostId(posts)} />
-      <ResetButton />
+      <ResetButton resetPosts={resetPosts} />
       { Object.values(posts).map(((post, index) => <PostPreview key={index} {...post} />)) }
     </div>
   )
@@ -42,7 +42,8 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
   return {
     loadNext: postId => dispatch(receivePost(postId)),
-    loadAuthor: () => dispatch(receiveAuthor())
+    loadAuthor: () => dispatch(receiveAuthor()),
+    resetPosts: () => dispatch(resetState('POSTS'))
   }
 }
 

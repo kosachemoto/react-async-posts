@@ -1,10 +1,9 @@
 import React from 'react';
-import { resetState } from '../../localStorage';
 import './reset-button.css';
 
-export const ResetButton = () => {
+export const ResetButton = ({resetPosts}) => {
   return (
-    <div className="reset-button" onClick={resetState}>
+    <div className="reset-button" onClick={resetPosts}>
       <div className="reset-button__title">Reset Local Storage</div>
     </div>
   )

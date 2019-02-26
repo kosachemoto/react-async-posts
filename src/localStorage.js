@@ -20,11 +20,3 @@ export const saveState = (state) => {
     //
   }
 }
-
-export const resetState = () => {
-  try {
-    localStorage.clear();
-  } catch (error) {
-    //
-  }
-}

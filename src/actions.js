@@ -1,6 +1,10 @@
 import fetch from 'isomorphic-fetch';
 import * as services from './services';
 
+export const RESET_STATE = {
+  POSTS: "RESET_STATE_POSTS"
+}
+
 export const REQUEST_COMMENTS = 'REQUEST_COMMENTS';
 export const REQUEST_POST = {
   START: "REQUEST_POST_START",
@@ -12,6 +16,12 @@ export const REQUEST_AUTHOR = {
   START: "REQUEST_AUTHOR_START",
   FINISH: "REQUEST_AUTHOR_FINISH",
   ERROR: "REQUEST_AUTHOR_ERROR"
+}
+
+export function resetState(state) {
+  return {
+    type: RESET_STATE[state]
+  }
 }
 
 export function requestPost(state, payload) {
