@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 import { createStore, applyMiddleware, compose } from 'redux';
-import root from './reducers';
+import { root } from './reducers';
 import { createLogger } from 'redux-logger';
 import { Root } from './components';
 import { loadState, saveState } from './localStorage';

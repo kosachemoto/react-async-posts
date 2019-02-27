@@ -1,9 +1,6 @@
-import { 
-  REQUEST_POST, 
-  RESET_STATE 
-} from './actions';
+import { REQUEST_POST } from './../../actions';
 
-function posts(state = {}, action) {
+export const posts = (state = {}, action) => {
   switch (action.type) {
     case REQUEST_POST.FINISH: 
       const post = action.payload.post;
@@ -24,18 +21,3 @@ function posts(state = {}, action) {
       }
   }
 }
-
-function root(state, action) {
-  switch (action.type) {
-    case RESET_STATE.POSTS:
-      state  = undefined;
-    break;
-  }
-  return posts(state, action)
-}
-
-// const postsApp = combineReducers({
-//   posts
-// });
-
-export default root;
