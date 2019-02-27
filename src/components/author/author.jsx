@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './author.css';
 
-export const Author = ({className}) => {
+export const Author = ({className, author}) => {
+
   return (
     <div className={`author ${className}`}>
-      <span className="author-name">Bret</span> / <span className="author-email">Sincere@april.biz</span>
+      <span className="author-name">{author.name}</span> / <span className="author-email">{author.email}</span>
     </div>
   );
 }

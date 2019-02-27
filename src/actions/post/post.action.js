@@ -18,11 +18,10 @@ export function receivePost(postId) {
     dispatch(requestPost('START'));
     services.Post.post(postId)
       .then(post => {
-        console.log("post:", post);
         dispatch(requestPost('FINISH', { post }))
       })
       .catch(error => {
         dispatch(requestPost('ERROR', {error}));
-      })
+      });
   }
-}}
+}

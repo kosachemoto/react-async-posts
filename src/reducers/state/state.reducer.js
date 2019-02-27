@@ -1,5 +1,19 @@
+import { combineReducers } from 'redux';
 import { RESET_STATE } from './../../actions';
-import { posts } from './../../reducers';
+// import { posts, users } from './../../reducers';
+
+import { posts } from './../../reducers/posts/posts.reducer';
+import { users } from './../../reducers/users/users.reducer';
+
+const appReducer = combineReducers({
+  posts,
+  users
+});
+
+// export const root = combineReducers({
+//   posts,
+//   users
+// });
 
 export const root = (state, action) => {
   switch (action.type) {
@@ -7,5 +21,5 @@ export const root = (state, action) => {
       state  = undefined;
     break;
   }
-  return posts(state, action)
+  return appReducer(state, action)
 }

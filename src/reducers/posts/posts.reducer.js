@@ -5,19 +5,17 @@ export const posts = (state = {}, action) => {
     case REQUEST_POST.FINISH: 
       const post = action.payload.post;
       return {
-        posts: {
-          ...state.posts, 
-          [post.id]: {...post}
-        }, // need some refactoring...
+        ...state, 
+        [post.id]: {...post} // need some refactoring...
       }
     case REQUEST_POST.ERROR:
       return {
-        posts: {...state.posts}
+        ...state
       }
     case REQUEST_POST.START:
     default:
       return {
-        posts: {...state.posts}
+        ...state
       }
   }
 }

@@ -16,15 +16,12 @@ export function requestUser(state, payload) {
 export function receiveUser(userId) {
   return function(dispatch) {
     dispatch(requestUser('START'));
-    try {
-      // servicces.Post.author(userId)
-      //   .then(author => {
-      //     console.log("(action):author:", author);
-          dispatch(requestUser('FINISH'));
-        // })
-    } catch (error) {
-      dispatch(requestUser('ERROR'));
-    }
+    services.Post.user(userId)
+      .then(user => {
+        dispatch(requestUser('FINISH', { user }));
+      })
+      .catch(error => {
+        dispatch(requestUser('ERROR', { error }));
+      });
   }
 }
-

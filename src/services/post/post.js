@@ -15,12 +15,11 @@ export const Post = {
     });
   },
   user: (userId) => {
-    return new Promise(resolve => {
+    return new Promise((resolve, reject) => {
       fetch(`${url}/users/${userId}`)
-        .then(response => response.json())
-        .then(user => {
-          resolve(user)
-        })
-    })
+        .then(response => {
+          response.ok ? resolve(response.json()) : reject(new Error(`Request status: ${response.status} :(`));
+        });
+    });
   }
 }

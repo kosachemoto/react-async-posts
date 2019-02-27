@@ -1,21 +1,24 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Post, CommentList } from './../../components';
-import * as services from '../../services';
 import './post-detail.css';
-import { receivePost } from './../../actions';
+import { receivePost, receiveUser } from './../../actions';
 
-const PostDetail = ({className, postId, post, loadPost}) => {
+const PostDetail = ({className, postId, post, author, loadPost, loadUser}) => {
   useEffect(() => {
     if (postId && !post) {
       loadPost(postId);
+    }
+
+    if (post && !author) {
+      loadUser(post.userId);
     }
   });
 
   if (postId) {
     return (
       (<div className={`post-detail ${className}`}>
-        <Post {...post} />
+        <Post post={post} author={author} />
         <CommentList />
       </div>)
     );
@@ -30,15 +33,20 @@ const PostDetail = ({className, postId, post, loadPost}) => {
 
 const mapStateToProps = (state, ownProps) => {
   const postId = ownProps.postId;
+  const post = state.posts[postId] ? state.posts[postId] : undefined;
+  const userId = post ? post.userId : undefined;
+  const author = state.users[userId] ? state.users[userId] : undefined;
 
   return {
-    post: state.posts[postId] ? state.posts[postId] : undefined
+    post,
+    author
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    loadPost: (postId) => dispatch(receivePost(postId))
+    loadPost: (postId) => dispatch(receivePost(postId)),
+    loadUser: (userId) => dispatch(receiveUser(userId))
   }
 }
 
