@@ -1,6 +1,6 @@
-import {
-  REQUEST_POST,
-  RESET_STATE
+import { 
+  REQUEST_POST, 
+  RESET_STATE 
 } from './actions';
 
 function posts(state = {}, action) {

@@ -15,7 +15,7 @@ export const Post = {
         })
     });
   },
-  author: (userId) => {
+  user: (userId) => {
     return new Promise(resolve => {
       fetch(`${url}/users/${userId}`)
         .then(response => response.json())
