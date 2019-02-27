@@ -7,12 +7,11 @@ export const Post = {
   posts: [],
   loaded: false,
   post: (postId) => {
-    return new Promise(resolve => {
+    return new Promise((resolve, reject) => {
       fetch(`${url}/posts/${postId}`)
-        .then(response => response.json())
-        .then(post => {
-          resolve(post)
-        })
+        .then(response => {
+          response.ok ? resolve(response.json()) : reject(new Error(`Request status: ${response.status} :(`));
+        });
     });
   },
   user: (userId) => {
