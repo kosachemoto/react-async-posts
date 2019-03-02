@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "f1314f296929b4c19759",
-    "url": "/react-async-posts/static/css/main.46fdab5c.chunk.css"
+    "revision": "c715fa381b725be62648",
+    "url": "/react-async-posts/static/css/main.88643478.chunk.css"
   },
   {
-    "revision": "f1314f296929b4c19759",
-    "url": "/react-async-posts/static/js/main.f1314f29.chunk.js"
+    "revision": "c715fa381b725be62648",
+    "url": "/react-async-posts/static/js/main.c715fa38.chunk.js"
   },
   {
     "revision": "aafddf27121d0ca96a80",
@@ -28,7 +28,7 @@ self.__precacheManifest = [
     "url": "/react-async-posts/static/media/stripes.db80ec9a.svg"
   },
   {
-    "revision": "c57239034038a81a39bbf357587c5849",
+    "revision": "79559d3cee4d7ac10a6d6c399071c590",
     "url": "/react-async-posts/index.html"
   }
 ];
