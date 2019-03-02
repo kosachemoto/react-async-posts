@@ -5,9 +5,9 @@ import './comment-list.css';
 export const CommentList = () => {
   return (
     <div className="comment-list">
-      {/* <Comment />
       <Comment />
-      <Comment /> */}
+      <Comment />
+      <Comment />
     </div>
   );
 }
