@@ -1,5 +1,6 @@
 export * from './app';
 export * from './author';
+export * from './button';
 export * from './comment';
 export * from './comment-list';
 export * from './error-message';
