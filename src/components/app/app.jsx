@@ -1,5 +1,6 @@
 import React from 'react';
-import { PostListContainer, PostDetailContainer } from './../../containers';
+import { MasterPanel } from '../../components';
+import { PostDetailContainer } from '../../containers';
 import './app.css';
 
 export const App = ({match}) => {
@@ -10,7 +11,7 @@ export const App = ({match}) => {
       <div className="app__title">
         Posts app
       </div>
-      <PostListContainer className="app__post-list" />
+      <MasterPanel />
       <PostDetailContainer className="app__post-detail" postId={selectedPostId || ''} />
     </div>
   );

@@ -1,15 +1,29 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { resetState, receivePost, receiveAuthor } from './../../actions';
-import { PostPreview, MoreButton, ResetButton } from './../../components';
-import './post-list.css';
+import { receivePost, resetState } from '../../actions';
+import { Button, MoreButton, ResetButton } from '../../components';
+import './control-panel.css';
 
-const PostList = ({posts, loadNext, className, resetPosts}) => {
+
+const ControlPanel = ({posts, loadPost, resetPosts}) => {
   const nextId = nextPostId(posts);
-  
+
+  const metadata = [
+    {
+      className: 'more-button',
+      image: 'plus',
+      callback: () => {loadPost(nextId)}
+    },
+    {
+      className: 'reset-button',
+      image: 'stop',
+      callback: resetPosts
+    }
+  ];
+
   return (
-    <div className={`post-list ${className}`}>
-      { Object.values(posts).map(((post, index) => <PostPreview key={index} {...post} />)) }
+    <div className="control-panel">
+      { metadata.map(button => <Button {...button} />) }
     </div>
   )
 }
@@ -39,13 +53,12 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    loadNext: postId => dispatch(receivePost(postId)),
-    loadAuthor: () => dispatch(receiveAuthor()),
+    loadPost: postId => dispatch(receivePost(postId)),
     resetPosts: () => dispatch(resetState('POSTS'))
   }
 }
 
-export const PostListContainer = connect(
+export const ControlPanelContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(PostList);
+)(ControlPanel)
