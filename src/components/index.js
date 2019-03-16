@@ -8,3 +8,4 @@ export * from './master-panel';
 export * from './post';
 export * from './post-preview';
 export * from './root';
+export * from './not-found';
