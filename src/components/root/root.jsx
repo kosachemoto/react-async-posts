@@ -10,8 +10,8 @@ export const Root = ({store}) => {
       <BrowserRouter basename={process.env.PUBLIC_URL}>
         <>
           <Route exact path="/" render={() => <Redirect to="/posts" />} />
-          <Route exact path= "/posts" component={App} />
-          <Route exact path= "/posts/:postId" component={App} />
+          <Route exact path="/posts" render={(props) => <App {...props} />} />
+          <Route exact path="/posts/:postId" render={(props) => <App {...props} />} />
         </>
       </BrowserRouter>
     </Provider>
