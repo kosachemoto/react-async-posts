@@ -5,14 +5,29 @@ import { Button, MoreButton, ResetButton } from '../../components';
 import './control-panel.css';
 
 
-const ControlPanel = ({posts, loadPost, resetPosts}) => {
+const ControlPanel = (props) => {
+  const {posts, loadPost, resetPosts} = props;
   const nextId = nextPostId(posts);
 
   const metadata = [
     {
+      className: 'home-button',
+      image: 'home',
+      callback: () => {
+        
+      }
+    },
+    {
       className: 'more-button',
       image: 'plus',
       callback: () => {loadPost(nextId)}
+    },
+    {
+      className: 'refresh-button',
+      image: 'refresh',
+      callback: () => {
+        
+      }
     },
     {
       className: 'reset-button',

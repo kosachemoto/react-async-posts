@@ -6,6 +6,15 @@
   background-color: lightseagreen;
 }
 
+/* home-button */
+.home-button {
+  background-color: lightskyblue;
+}
+
+.home-button:hover {
+  background-color: #AFDCF7;
+}
+
 /* more-button */
 .more-button {
   background-color: paleturquoise;
@@ -13,6 +22,15 @@
 
 .more-button:hover {
   background-color: #D0FDFD;
+}
+
+/* refresh-button */
+.refresh-button {
+  background-color: blanchedalmond;
+}
+
+.refresh-button:hover {
+  background-color: #FFF9F0;
 }
 
 /* reset-button */

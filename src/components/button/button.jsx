@@ -1,13 +1,14 @@
 import React from 'react';
 import './button.css';
 
-
-const imagePath = '../../assets/svg';
-
 export const Button = ({image, callback, className = ""}) => {
   const getImage = (image) => {
-    console.log("image log:", image);
     try {
+      const imagePath = '../../assets/svg';
+      const myPath = './' + imagePath + '/' + image + '.svg';
+      // const value = require('../../assets/svg');
+      // console.log('value:', value);
+      
       return require(`../../assets/svg/${image}.svg`);
     } catch (error) {
       console.error(error);
